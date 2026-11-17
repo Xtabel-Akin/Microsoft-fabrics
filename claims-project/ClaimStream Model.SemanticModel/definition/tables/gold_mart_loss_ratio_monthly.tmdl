@@ -1,0 +1,125 @@
+table gold_mart_loss_ratio_monthly
+	lineageTag: 412896bc-fc19-4f74-adc0-00680f256f10
+	sourceLineageTag: [dbo].[gold_mart_loss_ratio_monthly]
+
+	column month_start
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 71868672-e447-45fd-be12-31545ae387cb
+		sourceLineageTag: month_start
+		summarizeBy: none
+		sourceColumn: month_start
+
+		annotation SummarizationSetBy = Automatic
+
+	column coverage_code
+		dataType: string
+		lineageTag: da848e53-75c1-484e-96ce-984a4af2ffa3
+		sourceLineageTag: coverage_code
+		summarizeBy: none
+		sourceColumn: coverage_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column province
+		dataType: string
+		lineageTag: e118c208-b317-40df-9fbf-58f5c2641697
+		sourceLineageTag: province
+		summarizeBy: none
+		sourceColumn: province
+
+		annotation SummarizationSetBy = Automatic
+
+	column earned_premium
+		dataType: double
+		lineageTag: 8b60af81-f3c6-425c-ba15-09bd34e4ce65
+		sourceLineageTag: earned_premium
+		summarizeBy: sum
+		sourceColumn: earned_premium
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column policies_in_force
+		dataType: int64
+		formatString: 0
+		lineageTag: 327c2960-f207-460b-b4dc-1c9ffe738780
+		sourceLineageTag: policies_in_force
+		summarizeBy: sum
+		sourceColumn: policies_in_force
+
+		annotation SummarizationSetBy = Automatic
+
+	column claim_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 4b02d977-a0f7-45f3-9c09-7f4c765b23ae
+		sourceLineageTag: claim_count
+		summarizeBy: sum
+		sourceColumn: claim_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column paid_amount
+		dataType: double
+		lineageTag: 88be821d-a43f-4330-a24e-f11cf3747df0
+		sourceLineageTag: paid_amount
+		summarizeBy: sum
+		sourceColumn: paid_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column incurred_amount
+		dataType: double
+		lineageTag: 0e840683-e1db-4e1e-83c8-b60c3faa7933
+		sourceLineageTag: incurred_amount
+		summarizeBy: sum
+		sourceColumn: incurred_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column outstanding_amount
+		dataType: double
+		lineageTag: f2c154aa-a291-4cc1-acf4-1168790bdbd0
+		sourceLineageTag: outstanding_amount
+		summarizeBy: sum
+		sourceColumn: outstanding_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column loss_ratio
+		dataType: double
+		lineageTag: 4e74b112-053d-419c-b67e-b51f218e7b57
+		sourceLineageTag: loss_ratio
+		summarizeBy: sum
+		sourceColumn: loss_ratio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column claim_frequency_per_100_policies
+		dataType: double
+		lineageTag: 1ccc1406-169b-4dcc-90e8-6bc6dbe81642
+		sourceLineageTag: claim_frequency_per_100_policies
+		summarizeBy: sum
+		sourceColumn: claim_frequency_per_100_policies
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition gold_mart_loss_ratio_monthly = entity
+		mode: directLake
+		source
+			entityName: gold_mart_loss_ratio_monthly
+			schemaName: dbo
+			expressionSource: 'DirectLake - lh_claimstream'
+

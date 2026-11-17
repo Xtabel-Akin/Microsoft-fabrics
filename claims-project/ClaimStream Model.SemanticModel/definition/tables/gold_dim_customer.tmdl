@@ -1,0 +1,48 @@
+table gold_dim_customer
+	lineageTag: 1bbbbc70-9a23-43a5-af85-8a795d1205d8
+	sourceLineageTag: [dbo].[gold_dim_customer]
+
+	column customer_id
+		dataType: string
+		lineageTag: 9ae099b6-e2f5-4481-8551-f438a3242817
+		sourceLineageTag: customer_id
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column province
+		dataType: string
+		lineageTag: 788c13b7-1b4d-4398-8b97-8e068d08d0e1
+		sourceLineageTag: province
+		summarizeBy: none
+		sourceColumn: province
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d3673fb3-63a5-4870-b1bf-1a4b68689ece
+		sourceLineageTag: created_date
+		summarizeBy: none
+		sourceColumn: created_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column age_band
+		dataType: string
+		lineageTag: 38a13e45-6b95-4ab8-a236-a3945a77a7ed
+		sourceLineageTag: age_band
+		summarizeBy: none
+		sourceColumn: age_band
+
+		annotation SummarizationSetBy = Automatic
+
+	partition gold_dim_customer = entity
+		mode: directLake
+		source
+			entityName: gold_dim_customer
+			schemaName: dbo
+			expressionSource: 'DirectLake - lh_claimstream'
+

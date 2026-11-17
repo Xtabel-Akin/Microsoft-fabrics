@@ -1,0 +1,74 @@
+table 'Claim Measures'
+	lineageTag: 0ea02a02-94ad-4e02-87f8-f6a6ef6aa9e8
+
+	measure Paid = SUM(gold_fact_claims[paid_amount])
+		lineageTag: d0156790-99c9-4642-ad2d-7f8389a9e20a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Incurred = SUM(gold_fact_claims[incurred_amount])
+		lineageTag: 042d26b8-7f2c-46ae-a58f-ac5f9e8cf834
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Outstanding Reserve' = SUM(gold_fact_claims[outstanding_amount])
+		lineageTag: cda94023-ef41-40a6-97b5-9507f61188c2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Exposure Years' =
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM(gold_fact_premium_monthly[days_in_force]),
+			        USERELATIONSHIP(gold_fact_premium_monthly[customer_id], gold_dim_customer[customer_id])
+			    ),
+			    365
+			)
+		lineageTag: c4589858-be27-43f3-acd0-8ceb931cafa0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Loss Ratio' = DIVIDE([Incurred], [Earned Premium])
+		lineageTag: 664b9f15-af02-4c5d-91d8-c9d92c03fc69
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Claim Frequency (per policy-year)' = DIVIDE([Claim Count], [Exposure Years])
+		lineageTag: f052ed92-fc36-48ff-888c-b82533b5a268
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Open Claims' = CALCULATE([Claim Count], gold_fact_claims[is_open] = TRUE())
+		formatString: 0
+		lineageTag: b939bef3-947e-41c8-b6ca-cea9a4325c49
+
+	measure 'Loss Ratio TTM' =
+			
+			CALCULATE(
+			    [Loss Ratio],
+			    DATESINPERIOD(gold_dim_date[date], MAX(gold_dim_date[date]), -12, MONTH)
+			)
+		lineageTag: 8cd7e2fc-4bed-48f1-9330-686167e7fdd4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Column
+		formatString: 0
+		lineageTag: ec0c3b1e-6f87-4555-9608-56efed3b6779
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Claim Measures' = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = a9cb4b5f23bb438fa1a1bdfbe4856a80
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":null}
+
+	annotation 277cc1b9-af89-4597-8e15-cacc25c0886b = To use special characters in a calculated table name, enclose the entire name in brackets ( [] ) and add a ] to any closing brackets in the name.
+

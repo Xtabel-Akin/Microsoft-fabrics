@@ -1,0 +1,66 @@
+table gold_dim_coverage
+	lineageTag: 32265222-917e-4985-8b67-fe39dad6eea3
+	sourceLineageTag: [dbo].[gold_dim_coverage]
+
+	column coverage_code
+		dataType: string
+		lineageTag: b4a8cc92-5129-4159-93b4-326f68dbbea2
+		sourceLineageTag: coverage_code
+		summarizeBy: none
+		sourceColumn: coverage_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column coverage_name
+		dataType: string
+		lineageTag: ef90771c-47c7-4d97-bf8f-6ea29c295a75
+		sourceLineageTag: coverage_name
+		summarizeBy: none
+		sourceColumn: coverage_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column line_of_business
+		dataType: string
+		lineageTag: cb94aa7a-482b-418e-89c4-e37e2c9e8f7f
+		sourceLineageTag: line_of_business
+		summarizeBy: none
+		sourceColumn: line_of_business
+
+		annotation SummarizationSetBy = Automatic
+
+	column _ingested_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 133c7e73-0c5d-4d18-bf41-d6ecd248ea12
+		sourceLineageTag: _ingested_at
+		summarizeBy: none
+		sourceColumn: _ingested_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column _source
+		dataType: string
+		lineageTag: 445a03b6-673b-49b1-88f6-43b5b1d59b8d
+		sourceLineageTag: _source
+		summarizeBy: none
+		sourceColumn: _source
+
+		annotation SummarizationSetBy = Automatic
+
+	column _batch_id
+		dataType: string
+		lineageTag: ae39d0f5-8f6a-440f-89c9-9048e12a5f51
+		sourceLineageTag: _batch_id
+		summarizeBy: none
+		sourceColumn: _batch_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition gold_dim_coverage = entity
+		mode: directLake
+		source
+			entityName: gold_dim_coverage
+			schemaName: dbo
+			expressionSource: 'DirectLake - lh_claimstream'
+

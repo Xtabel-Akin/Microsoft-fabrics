@@ -1,0 +1,23 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["DirectLake - lh_claimstream"]
+
+annotation PBI_ProTooling = ["DirectLakeOnOneLakeInWeb","WebModelingEdit"]
+
+ref table gold_dim_customer
+ref table gold_dim_date
+ref table gold_dim_policy
+ref table gold_fact_claims
+ref table gold_fact_premium_monthly
+ref table gold_mart_loss_ratio_monthly
+ref table 'Claim Measures'
+ref table gold_dim_coverage
+

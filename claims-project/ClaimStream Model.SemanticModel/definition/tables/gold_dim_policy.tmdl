@@ -1,0 +1,127 @@
+table gold_dim_policy
+	lineageTag: 7202b38f-530b-4bd6-a34c-38f493b75436
+	sourceLineageTag: [dbo].[gold_dim_policy]
+
+	column policy_version_id
+		dataType: string
+		lineageTag: 9218e409-0d07-46c9-b8b1-0e4ef745cb8c
+		sourceLineageTag: policy_version_id
+		summarizeBy: none
+		sourceColumn: policy_version_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column policy_id
+		dataType: string
+		lineageTag: bf85babd-a8c9-419c-a08f-26200262d901
+		sourceLineageTag: policy_id
+		summarizeBy: none
+		sourceColumn: policy_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column version_no
+		dataType: int64
+		formatString: 0
+		lineageTag: dc918a92-959c-443d-a7c4-362fe72290e0
+		sourceLineageTag: version_no
+		summarizeBy: sum
+		sourceColumn: version_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: string
+		lineageTag: 881af2ae-f374-4c22-88c1-a6bb4c5b502b
+		sourceLineageTag: customer_id
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column coverage_code
+		dataType: string
+		lineageTag: 9a14135c-0169-4da6-b10a-4a5374d66337
+		sourceLineageTag: coverage_code
+		summarizeBy: none
+		sourceColumn: coverage_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column effective_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 20459147-0259-440a-aa22-abefed4ef57b
+		sourceLineageTag: effective_date
+		summarizeBy: none
+		sourceColumn: effective_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column end_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5a1dbe2c-3a9b-49df-8efa-b7d45a05857b
+		sourceLineageTag: end_date
+		summarizeBy: none
+		sourceColumn: end_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column annual_premium
+		dataType: double
+		lineageTag: 8aae2f3f-1cfb-42e2-9309-b2e03993578b
+		sourceLineageTag: annual_premium
+		summarizeBy: sum
+		sourceColumn: annual_premium
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column status
+		dataType: string
+		lineageTag: 7a1fca8a-e72f-4729-b923-552194b6ab29
+		sourceLineageTag: status
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column valid_from
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 917b2385-cead-4623-a102-f59e2910cae0
+		sourceLineageTag: valid_from
+		summarizeBy: none
+		sourceColumn: valid_from
+
+		annotation SummarizationSetBy = Automatic
+
+	column valid_to
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5c298bd5-ae8b-49cf-a929-179462ba2b92
+		sourceLineageTag: valid_to
+		summarizeBy: none
+		sourceColumn: valid_to
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_current
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 204b8a86-48c2-46bb-b8e8-25febd7d3274
+		sourceLineageTag: is_current
+		summarizeBy: none
+		sourceColumn: is_current
+
+		annotation SummarizationSetBy = Automatic
+
+	partition gold_dim_policy = entity
+		mode: directLake
+		source
+			entityName: gold_dim_policy
+			schemaName: dbo
+			expressionSource: 'DirectLake - lh_claimstream'
+

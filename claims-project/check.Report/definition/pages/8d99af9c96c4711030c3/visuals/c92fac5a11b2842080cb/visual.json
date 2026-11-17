@@ -1,0 +1,140 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.15.0/schema.json",
+  "name": "c92fac5a11b2842080cb",
+  "position": {
+    "x": 0,
+    "y": 69.329529243937245,
+    "z": 0,
+    "height": 363.59486447931528,
+    "width": 627.04707560627685,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gold_dim_coverage"
+                    }
+                  },
+                  "Property": "coverage_name"
+                }
+              },
+              "queryRef": "gold_dim_coverage.coverage_name",
+              "nativeQueryRef": "coverage_name"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Claim Measures"
+                    }
+                  },
+                  "Property": "Incurred"
+                }
+              },
+              "queryRef": "Claim Measures.Incurred",
+              "nativeQueryRef": "Incurred"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Claim Measures"
+                    }
+                  },
+                  "Property": "Loss Ratio"
+                }
+              },
+              "queryRef": "Claim Measures.Loss Ratio",
+              "nativeQueryRef": "Loss Ratio"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gold_fact_claims"
+                    }
+                  },
+                  "Property": "Earned Premium"
+                }
+              },
+              "queryRef": "gold_fact_claims.Earned Premium",
+              "nativeQueryRef": "Earned Premium"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "1c8dc1440660ea8840e0",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Claim Measures"
+              }
+            },
+            "Property": "Incurred"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "31bac24bc0d3c190e773",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Claim Measures"
+              }
+            },
+            "Property": "Loss Ratio"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8e7f0a5fbe1360b80938",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "gold_fact_claims"
+              }
+            },
+            "Property": "Earned Premium"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "b1c3b858e123d32c9d23",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "gold_dim_coverage"
+              }
+            },
+            "Property": "coverage_name"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

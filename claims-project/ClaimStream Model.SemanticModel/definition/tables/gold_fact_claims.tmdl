@@ -1,0 +1,210 @@
+table gold_fact_claims
+	lineageTag: f9f1e3f7-5aea-4e2b-85b2-3b46ae0f1851
+	sourceLineageTag: [dbo].[gold_fact_claims]
+
+	measure 'Earned Premium' =
+			
+			CALCULATE(
+			    SUM(gold_fact_premium_monthly[earned_premium]),
+			    USERELATIONSHIP(gold_fact_premium_monthly[customer_id], gold_dim_customer[customer_id])
+			)
+		lineageTag: 2b019253-fab8-4e44-86e6-30d09ead6e60
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Claim Count' = COUNTROWS(gold_fact_claims)
+		formatString: 0
+		lineageTag: fe0c9bfb-9e34-4476-87ce-8f31929b13f1
+
+		changedProperty = Name
+
+	measure 'Avg Report Lag (days)' = AVERAGE(gold_fact_claims[report_lag_days])
+		lineageTag: a09a7879-f970-457e-8a50-ec0d86ceb602
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Severity' = DIVIDE([Incurred], [Claim Count])
+		lineageTag: 9a24809d-b2ef-4a9b-bcdb-1a4bc06b64cb
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column claim_id
+		dataType: string
+		lineageTag: f5036fa8-77ac-4dd0-97e1-8c67c09515e0
+		sourceLineageTag: claim_id
+		summarizeBy: none
+		sourceColumn: claim_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column policy_version_id
+		dataType: string
+		lineageTag: 351a3064-188e-4863-84eb-f4459351eb3b
+		sourceLineageTag: policy_version_id
+		summarizeBy: none
+		sourceColumn: policy_version_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column policy_id
+		dataType: string
+		lineageTag: fa7ee2a5-25e1-404f-b704-980724106bbb
+		sourceLineageTag: policy_id
+		summarizeBy: none
+		sourceColumn: policy_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: string
+		lineageTag: da3c2910-357a-4a09-a35e-a7473c74963f
+		sourceLineageTag: customer_id
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column coverage_code
+		dataType: string
+		lineageTag: 657d8094-d041-4c57-bb70-1c62a522666d
+		sourceLineageTag: coverage_code
+		summarizeBy: none
+		sourceColumn: coverage_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column loss_date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 3bf400a3-b5ca-412d-a185-5d4b1a4c20b4
+		sourceLineageTag: loss_date_key
+		summarizeBy: none
+		sourceColumn: loss_date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column loss_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 64a5d449-443f-4835-a6e8-7fa45ea259e8
+		sourceLineageTag: loss_date
+		summarizeBy: none
+		sourceColumn: loss_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column reported_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9456750f-2766-4f66-a164-e44334f0ea4d
+		sourceLineageTag: reported_date
+		summarizeBy: none
+		sourceColumn: reported_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column report_lag_days
+		dataType: int64
+		formatString: 0
+		lineageTag: 8a91160e-a688-4156-b0fe-e57768b15ebd
+		sourceLineageTag: report_lag_days
+		summarizeBy: sum
+		sourceColumn: report_lag_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 3833a02d-2c4f-4b64-9e2f-86225f91ccfb
+		sourceLineageTag: status
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_open
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: af0f242d-e826-4f2f-bcbf-8175a834eda3
+		sourceLineageTag: is_open
+		summarizeBy: none
+		sourceColumn: is_open
+
+		annotation SummarizationSetBy = Automatic
+
+	column cause_of_loss
+		dataType: string
+		lineageTag: 256aa79b-a30b-47e9-8d47-652a87bebad8
+		sourceLineageTag: cause_of_loss
+		summarizeBy: none
+		sourceColumn: cause_of_loss
+
+		annotation SummarizationSetBy = Automatic
+
+	column paid_amount
+		dataType: double
+		lineageTag: dab9f7d1-a1d3-4a6b-ae70-da6147020853
+		sourceLineageTag: paid_amount
+		summarizeBy: sum
+		sourceColumn: paid_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column payment_count
+		dataType: int64
+		formatString: 0
+		lineageTag: e28e8c00-ba79-4080-8b8f-3569ed81519b
+		sourceLineageTag: payment_count
+		summarizeBy: sum
+		sourceColumn: payment_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column reserve_amount
+		dataType: double
+		lineageTag: 5a1aaec0-4e7b-4020-b37a-1c93335f74f7
+		sourceLineageTag: reserve_amount
+		summarizeBy: sum
+		sourceColumn: reserve_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column incurred_amount
+		dataType: double
+		lineageTag: c907a1ae-c2f2-4699-819f-58b19dc3cc00
+		sourceLineageTag: incurred_amount
+		summarizeBy: sum
+		sourceColumn: incurred_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column outstanding_amount
+		dataType: double
+		lineageTag: b2b3e712-8196-4536-9d82-3a9a5828a3e9
+		sourceLineageTag: outstanding_amount
+		summarizeBy: sum
+		sourceColumn: outstanding_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition gold_fact_claims = entity
+		mode: directLake
+		source
+			entityName: gold_fact_claims
+			schemaName: dbo
+			expressionSource: 'DirectLake - lh_claimstream'
+

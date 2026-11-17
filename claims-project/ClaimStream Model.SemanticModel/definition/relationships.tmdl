@@ -1,0 +1,29 @@
+relationship d3b8b137-0114-991d-4372-d3d38c678e8c
+	fromColumn: gold_fact_claims.loss_date_key
+	toColumn: gold_dim_date.date_key
+
+relationship bf5b3e38-61e5-9751-d99c-a26825042d3b
+	fromColumn: gold_dim_policy.policy_version_id
+	toColumn: gold_fact_claims.policy_version_id
+
+relationship 2a162cb6-f6b6-03de-84f9-f1ee6df91878
+	fromColumn: gold_fact_premium_monthly.month_start
+	toColumn: gold_dim_date.date
+
+relationship c5b0c591-97eb-926c-c688-c3a2a934fbbf
+	isActive: false
+	fromColumn: gold_fact_premium_monthly.customer_id
+	toColumn: gold_dim_customer.customer_id
+
+relationship 3afc0f65-59f1-558c-9447-1f8431b90f4c
+	fromColumn: gold_fact_claims.coverage_code
+	toColumn: gold_dim_coverage.coverage_code
+
+relationship 232c392e-ba01-c789-8bb6-2601a0acdea7
+	fromColumn: gold_fact_premium_monthly.coverage_code
+	toColumn: gold_dim_coverage.coverage_code
+
+relationship c6ed741a-6ff3-547b-3af6-f9a6c686baff
+	fromColumn: gold_fact_claims.customer_id
+	toColumn: gold_dim_customer.customer_id
+

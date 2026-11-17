@@ -1,0 +1,89 @@
+table gold_fact_premium_monthly
+	lineageTag: bb300a54-c047-4672-bd4b-3ea747cda0b9
+	sourceLineageTag: [dbo].[gold_fact_premium_monthly]
+
+	column policy_version_id
+		dataType: string
+		lineageTag: d173de0e-ad15-4386-85ba-c15e46fdd328
+		sourceLineageTag: policy_version_id
+		summarizeBy: none
+		sourceColumn: policy_version_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column policy_id
+		dataType: string
+		lineageTag: be5d8e93-e195-40d2-89da-12603a9d7628
+		sourceLineageTag: policy_id
+		summarizeBy: none
+		sourceColumn: policy_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: string
+		lineageTag: a49ab5e7-c510-4649-94fd-a669955b661f
+		sourceLineageTag: customer_id
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column coverage_code
+		dataType: string
+		lineageTag: 22ce1669-f56c-471f-81a6-6eeb78a99aa8
+		sourceLineageTag: coverage_code
+		summarizeBy: none
+		sourceColumn: coverage_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_start
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e00af90a-0932-453e-bb12-e52f80ba45c1
+		sourceLineageTag: month_start
+		summarizeBy: none
+		sourceColumn: month_start
+
+		annotation SummarizationSetBy = Automatic
+
+	column days_in_force
+		dataType: int64
+		formatString: 0
+		lineageTag: 2fddf14e-46e4-4ad6-8de2-90c829b4b9c1
+		sourceLineageTag: days_in_force
+		summarizeBy: sum
+		sourceColumn: days_in_force
+
+		annotation SummarizationSetBy = Automatic
+
+	column annual_premium
+		dataType: double
+		lineageTag: beb6390b-6443-412c-a393-db55b4ff9e93
+		sourceLineageTag: annual_premium
+		summarizeBy: sum
+		sourceColumn: annual_premium
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column earned_premium
+		dataType: double
+		lineageTag: afd00150-9f1f-4c33-9185-07bc7ada386a
+		sourceLineageTag: earned_premium
+		summarizeBy: sum
+		sourceColumn: earned_premium
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition gold_fact_premium_monthly = entity
+		mode: directLake
+		source
+			entityName: gold_fact_premium_monthly
+			schemaName: dbo
+			expressionSource: 'DirectLake - lh_claimstream'
+
