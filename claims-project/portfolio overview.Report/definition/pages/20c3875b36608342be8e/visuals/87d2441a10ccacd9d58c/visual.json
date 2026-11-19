@@ -1,0 +1,107 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.15.0/schema.json",
+  "name": "87d2441a10ccacd9d58c",
+  "position": {
+    "x": 0,
+    "y": 497,
+    "z": 6,
+    "height": 271,
+    "width": 575,
+    "tabOrder": 6
+  },
+  "visual": {
+    "visualType": "lineStackedColumnComboChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gold_fact_claims"
+                    }
+                  },
+                  "Property": "cause_of_loss"
+                }
+              },
+              "queryRef": "gold_fact_claims.cause_of_loss",
+              "nativeQueryRef": "cause_of_loss",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Claim Measures"
+                    }
+                  },
+                  "Property": "Incurred"
+                }
+              },
+              "queryRef": "Claim Measures.Incurred",
+              "nativeQueryRef": "Incurred"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Claim Measures"
+                  }
+                },
+                "Property": "Incurred"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "fb640d1c1d5a009114e0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "gold_fact_claims"
+              }
+            },
+            "Property": "cause_of_loss"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "3cf7ad004b2e6341edc4",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Claim Measures"
+              }
+            },
+            "Property": "Incurred"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

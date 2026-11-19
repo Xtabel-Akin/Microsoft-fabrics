@@ -1,0 +1,139 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.15.0/schema.json",
+  "name": "4d749a755a79d3d01c64",
+  "position": {
+    "x": 0,
+    "y": 215.98138091543831,
+    "z": 3,
+    "height": 271.09387121799841,
+    "width": 574.95733126454616,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gold_dim_date"
+                    }
+                  },
+                  "Property": "year"
+                }
+              },
+              "queryRef": "gold_dim_date.year",
+              "nativeQueryRef": "Sum of year",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gold_dim_coverage"
+                    }
+                  },
+                  "Property": "coverage_name"
+                }
+              },
+              "queryRef": "gold_dim_coverage.coverage_name",
+              "nativeQueryRef": "coverage_name"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Claim Measures"
+                    }
+                  },
+                  "Property": "Loss Ratio"
+                }
+              },
+              "queryRef": "Claim Measures.Loss Ratio",
+              "nativeQueryRef": "Loss Ratio"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Claim Measures"
+                  }
+                },
+                "Property": "Loss Ratio"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "7c780e4ec86c131b1e6d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "gold_dim_date"
+              }
+            },
+            "Property": "year"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "27c6e734c230aee1a25b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "gold_dim_coverage"
+              }
+            },
+            "Property": "coverage_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "f3f38f0dc041bbddc605",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Claim Measures"
+              }
+            },
+            "Property": "Loss Ratio"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

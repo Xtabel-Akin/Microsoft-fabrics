@@ -27,3 +27,7 @@ relationship c6ed741a-6ff3-547b-3af6-f9a6c686baff
 	fromColumn: gold_fact_claims.customer_id
 	toColumn: gold_dim_customer.customer_id
 
+relationship 261f5374-9905-f18e-747b-12f2dfe2e0d1
+	fromColumn: gold_mart_loss_ratio_monthly.month_start
+	toColumn: gold_dim_date.date
+

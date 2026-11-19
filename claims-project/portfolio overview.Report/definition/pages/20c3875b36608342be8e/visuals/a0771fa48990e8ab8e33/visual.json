@@ -1,0 +1,107 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.15.0/schema.json",
+  "name": "a0771fa48990e8ab8e33",
+  "position": {
+    "x": 586.8735453840186,
+    "y": 215.98138091543831,
+    "z": 4,
+    "height": 271,
+    "width": 575,
+    "tabOrder": 4
+  },
+  "visual": {
+    "visualType": "lineStackedColumnComboChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gold_dim_customer"
+                    }
+                  },
+                  "Property": "province"
+                }
+              },
+              "queryRef": "gold_dim_customer.province",
+              "nativeQueryRef": "province",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Claim Measures"
+                    }
+                  },
+                  "Property": "Loss Ratio"
+                }
+              },
+              "queryRef": "Claim Measures.Loss Ratio",
+              "nativeQueryRef": "Loss Ratio"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Claim Measures"
+                  }
+                },
+                "Property": "Loss Ratio"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "fa7a3212ed44264ec8e7",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "gold_dim_customer"
+              }
+            },
+            "Property": "province"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ef42e7a32ea8bc887e30",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Claim Measures"
+              }
+            },
+            "Property": "Loss Ratio"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

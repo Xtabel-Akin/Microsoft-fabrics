@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.15.0/schema.json",
+  "name": "37b6de3697dbb179033a",
+  "position": {
+    "x": 586.8735453840186,
+    "y": 61.070597362296354,
+    "z": 2,
+    "height": 137.03646237393326,
+    "width": 280.0310318076028,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Claim Measures"
+                    }
+                  },
+                  "Property": "Loss Ratio"
+                }
+              },
+              "queryRef": "Claim Measures.Loss Ratio",
+              "nativeQueryRef": "Loss Ratio"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "913271bac3240b3a50dd",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Claim Measures"
+              }
+            },
+            "Property": "Loss Ratio"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
