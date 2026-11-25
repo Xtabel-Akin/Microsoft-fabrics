@@ -1,0 +1,122 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.15.0/schema.json",
+  "name": "f03c69324e9e58d34a6a",
+  "position": {
+    "x": 981.96671709531017,
+    "y": 517.9425113464448,
+    "z": 8,
+    "height": 271.22541603630862,
+    "width": 609.4402420574886,
+    "tabOrder": 8
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gold_dim_coverage"
+                    }
+                  },
+                  "Property": "coverage_name"
+                }
+              },
+              "queryRef": "gold_dim_coverage.coverage_name",
+              "nativeQueryRef": "coverage_name",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "gold_fact_premium_monthly"
+                        }
+                      },
+                      "Property": "days_in_force"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(gold_fact_premium_monthly.days_in_force)",
+              "nativeQueryRef": "Sum of days_in_force"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "gold_fact_premium_monthly"
+                      }
+                    },
+                    "Property": "days_in_force"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "d5606269cb6aab757279",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "gold_dim_coverage"
+              }
+            },
+            "Property": "coverage_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "9271dde0fb53761a2c73",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "gold_fact_premium_monthly"
+                  }
+                },
+                "Property": "days_in_force"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
