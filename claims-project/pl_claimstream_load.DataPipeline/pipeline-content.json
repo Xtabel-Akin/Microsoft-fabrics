@@ -1,0 +1,116 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "5ff32fcf-4109-b02c-430d-a869acaca8ec",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.00:30:00",
+          "retry": 1,
+          "retryIntervalInSeconds": 60,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "nb_01_bronze",
+        "dependsOn": []
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "8ef78728-bbc1-b141-4684-ca15e84ab351",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.00:30:00",
+          "retry": 1,
+          "retryIntervalInSeconds": 60,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "nb_02_silver",
+        "dependsOn": [
+          {
+            "activity": "nb_01_bronze",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "842c94aa-b051-a0d4-44ba-bfb4764545a2",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.00:30:00",
+          "retry": 1,
+          "retryIntervalInSeconds": 60,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "nb_03_gold",
+        "dependsOn": [
+          {
+            "activity": "nb_02_silver",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Fail",
+        "typeProperties": {
+          "message": "ClaimStream: Bronze notebook failed",
+          "errorCode": "Fail"
+        },
+        "name": "Bronze-nb-Fail",
+        "dependsOn": [
+          {
+            "activity": "nb_01_bronze",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Fail",
+        "typeProperties": {
+          "message": "ClaimStream: Silver notebook failed",
+          "errorCode": "Fail"
+        },
+        "name": "Silver-nb-Fail_copy",
+        "dependsOn": [
+          {
+            "activity": "nb_02_silver",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Fail",
+        "typeProperties": {
+          "message": "ClaimStream: Gold notebook failed",
+          "errorCode": "Fail"
+        },
+        "name": "Gold-nb-Fail_copy",
+        "dependsOn": [
+          {
+            "activity": "nb_03_gold",
+            "dependencyConditions": [
+              "Failed"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
